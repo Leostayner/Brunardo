@@ -35,21 +35,9 @@ class Janela_Principal():
         # Menu Principal
         self.menu_principal = Menu_Principal(self)
     
-        #Emissor
-        self.emissor_window = Emissor_window(self)
-    
-        #Receptor
-        self.receptor_window = Receptor_window(self)
-    
         # Iniciar menu
         self.menu_principal.mostrar()
-                
-    def mostrar_emissor(self):
-        self.emissor_window.mostrar()
-        
-    def mostrar_receptor(self):
-        self.receptor_window.mostrar()
-        
+                     
     def iniciar(self):
         self.window.mainloop()
 
@@ -62,8 +50,11 @@ class Menu_Principal():
         self.window1.grid(row = 0, column = 0, sticky = "nsew")
         self.window1.configure(background = 'white')
         
+	    #Variavel
+        self.var = 1
+
         # Geometria da pagina        
-        self.window1.rowconfigure(0, minsize = self.janela_principal.app_config['height_button'])
+        self.window1.rowconfigure(0, minsize = self.janela_principal.app_config['height_button'] - 50)
         self.window1.rowconfigure(1, minsize = self.janela_principal.app_config['height_button'])
         self.window1.rowconfigure(2, minsize = self.janela_principal.app_config['height_button'])
 
@@ -73,51 +64,37 @@ class Menu_Principal():
         self.Logo_label = tk.Label(self.window1)
         self.Logo_label.grid(row = 0, column = 0, sticky = "nsew")
         
-        self.button_Emissor = tk.Button(self.window1,height = 4, width = 10, text = "Enviar Texto")        
-        self.button_Emissor.grid(row = 1, column = 0)
-        self.button_Emissor.configure(command = self.rodaEmissor)
 
-        self.button_Receptor = tk.Button(self.window1, height = 4, width = 10, text = "Receber Texto")        
-        self.button_Receptor.grid(row = 2, column = 0)
-        self.button_Receptor.configure(command = self.rodaReceptor)
+        #self.txt = tk.Text(self.window1, height = 15, width = 30)
+        #self.txt.grid(row = 1, column = 0, sticky = "nsew")
+        #self.txt.configure(state = "disabled")
+
+        self.scrool = tk.Scrollbar(self.window1)
+        
+        self.txt = tk.Text(self.window1, height=4, width=50)
+        self.txt.grid(row = 1, column = 0)
+        self.scrool.grid(row = 1, column = 0)
+        self.scrool.config(command= self.txt.yview)
+        self.txt.config(yscrollcommand= self.scrool.set)
+        quote = """HAMLET: To be, or not to be--that is the question:
+        Whether 'tis nobler in the mind to suffer
+        The slings and arrows of outrageous fortune
+        Or to take arms against a sea of troubles
+        And by opposing end them. To die, to sleep--
+        No more--and by a sleep to say we end
+        The heartache, and the thousand natural shocks
+        That flesh is heir to. 'Tis a consummation
+        Devoutly to be wished."""
+        self.txt.insert("end", quote)
+
+
+#        self.button2 = tk.Radiobutton(self.window1)
+#        self.button2.configure(variable = self.var, value = 2)
+#        self.button2.grid(row = 2, column = 0)
+
 
     def mostrar(self):
         self.window1.tkraise()
     
-    def rodaReceptor(self):
-        self.janela_principal.mostrar_receptor()
-        
-    def rodaEmissor(self):
-        self.janela_principal.mostrar_emissor()     
-
-class Emissor_window():
-    
-    def __init__(self, janela_principal):
-        
-        self.janela_principal = janela_principal
-        self.window2 = tk.Frame(self.janela_principal.window)
-        self.window2.grid(row = 0, column = 0, sticky = "nsew")
-
-        self.window2.rowconfigure(0)
-        self.window2.columnconfigure(0)
-
-    def mostrar(self):
-        self.window2.tkraise()
-
-class Receptor_window():
-    
-    def __init__(self, janela_principal):
-        
-        self.janela_principal = janela_principal
-        self.window3 = tk.Frame(self.janela_principal.window)
-        self.window3.grid(row = 0, column = 0, sticky = "nsew")
-        self.window3.configure(background = 'white')
-        
-        self.window3.rowconfigure(0)
-        self.window3.columnconfigure(0)
-
-    def mostrar(self):
-        self.window3.tkraise()
-
 app = Janela_Principal()
 app.iniciar()
