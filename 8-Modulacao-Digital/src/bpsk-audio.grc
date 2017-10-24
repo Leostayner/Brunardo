@@ -736,7 +736,7 @@
     </param>
     <param>
       <key>port</key>
-      <value>1234</value>
+      <value>1235</value>
     </param>
     <param>
       <key>vlen</key>
@@ -849,11 +849,11 @@
     </param>
     <param>
       <key>file</key>
-      <value>/home/borg/Brunardo/8-Modulacao-Digital/src/Drummond-residos.txt</value>
+      <value>/home/bruna/Documentos/GitHub/Pull/Brunardo/8-Modulacao-Digital/src/TxT/Drummond-residos.txt</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(8, 196)</value>
+      <value>(0, 197)</value>
     </param>
     <param>
       <key>_rotation</key>

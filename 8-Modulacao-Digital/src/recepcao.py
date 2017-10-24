@@ -29,12 +29,25 @@ def main():
             print(" connection from {}".format(client_address))
 
             # Receive the data in small chunks and retransmit it
+            temp = b''
             while True:
-                data = connection.recv(16)
-                data = byToString(data)
-                print("{}".format(data))
+                data = connection.recv(2)
+                temp+=data
+
+                # data = byToString(data)
+                try:
+                    a = temp.decode()
+                    temp = b''
+
+                    print("{}".format(a))
+                
+
+                except UnicodeDecodeError:
+                    pass
+
                 if(len(data) <= 0):
                     break
+                
 
         finally:
             # Clean up the connection
@@ -43,8 +56,14 @@ def main():
 
 ## Convet para String.
 def byToString(value):
-    a = value.decode('utf8')
-    return a
+    a = value.decode()
+
+
+    # print(type(a))
+    # b = value.decode('utf-8', 'ignore')
+
+    # b = unicode(a, errors='replace')
+    return value
 
 
 if __name__ == "__main__":
