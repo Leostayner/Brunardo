@@ -6,7 +6,7 @@ import socket
 import sys
 
 def main():
-    PORTA = 1234
+    PORTA = 1235
 
     print("Inicializando socket TCP/IP")
     # Create a TCP/IP socket
@@ -32,7 +32,7 @@ def main():
             while True:
                 data = connection.recv(16)
                 data = byToString(data)
-                print("{}".format(data),end="")
+                print("{}".format(data))
                 if(len(data) <= 0):
                     break
 
@@ -43,7 +43,8 @@ def main():
 
 ## Convet para String.
 def byToString(value):
-    return value.decode() 
+    a = value.decode('utf8')
+    return a
 
 
 if __name__ == "__main__":
