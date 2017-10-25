@@ -3,7 +3,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Wed Oct 25 19:59:36 2017
+# Generated: Wed Oct 25 21:42:02 2017
 ##################################################
 
 if __name__ == '__main__':
@@ -66,13 +66,13 @@ class top_block(gr.top_block, Qt.QWidget):
         self.samp_rate_0 = samp_rate_0 = 44.1E3
         self.samp_rate = samp_rate = 32000
         self.rrc_taps = rrc_taps = firdes.root_raised_cosine(nfilts, nfilts, 1.0/float(sps), 0.35, 45*nfilts)
-        self.fc_slider = fc_slider = 2200
+        self.fc_slider = fc_slider = 4400
         self.BPSK = BPSK = digital.constellation_calcdist(([-1, 1]), ([0, 1]), 4, 1).base()
 
         ##################################################
         # Blocks
         ##################################################
-        self._fc_slider_range = Range(0, 18200, 200, 2200, 150)
+        self._fc_slider_range = Range(0, 18200, 200, 4400, 150)
         self._fc_slider_win = RangeWidget(self._fc_slider_range, self.set_fc_slider, "fc", "counter_slider", float)
         self.top_layout.addWidget(self._fc_slider_win)
         self.qtgui_time_sink_x_0 = qtgui.time_sink_f(
