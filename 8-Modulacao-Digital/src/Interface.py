@@ -39,6 +39,9 @@ class Janela_Principal():
     
         # Iniciar menu
         self.menu_principal.mostrar()
+
+        
+    
                      
     def iniciar(self):
         self.window.mainloop()
@@ -51,6 +54,9 @@ class Menu_Principal():
         self.window1 = tk.Frame(self.janela_principal.window)
         self.window1.grid(row = 0, column = 0, sticky = "nsew")
         self.window1.configure(background = 'white')
+
+        # inicializa
+        self.rx = rc.recepcao()
         
 	    #Variavel
         self.var = 1
@@ -94,6 +100,8 @@ class Menu_Principal():
         self.button3.grid(row = 2, column = 2,sticky = "nsew", pady = 2)
         self.button3.configure(command = self.emitir)
 
+        
+
     def mostrar(self):
         self.window1.tkraise()
     
@@ -104,6 +112,8 @@ class Menu_Principal():
 
     def receber(self):
         print("receber")
+        # self.window1.after(100, self.getText)
+        self.getText()
         self.button.configure(state = "normal")
         self.button2.configure(state = "disable")
 
@@ -113,10 +123,12 @@ class Menu_Principal():
         self.txt.insert("end", self.ment.get()+ '\n')
         self.entry.delete(0, 'end')
 
-           
-
-        
-
+    def getText(self):
+        print("func")
+        self.texto = self.rx.get()
+        print("lalala", self.texto)
+        self.txt.insert("end", self.texto)
+        self.window1.after(100, self.getText)
 
 app = Janela_Principal()
 app.iniciar()

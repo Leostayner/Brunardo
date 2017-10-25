@@ -4,67 +4,61 @@
 
 import socket
 import sys
+import time
 
-def main():
-    PORTA = 1235
+class recepcao(object):
+    def __init__(self):
+        PORTA = 1233
 
-    print("Inicializando socket TCP/IP")
-    # Create a TCP/IP socket
-    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        print("Inicializando socket TCP/IP")
+        # Create a TCP/IP socket
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-    # Bind the socket to the port
-    server_address = ('localhost', PORTA)
-    print("PORTA {}".format(PORTA))
-    sock.bind(server_address)
+        # Bind the socket to the port
+        server_address = ('localhost', PORTA)
+        print("PORTA {}".format(PORTA))
+        sock.bind(server_address)
 
-    # Listen for incoming connections
-    sock.listen(1)
+        # Listen for incoming connections
+        sock.listen(1)
 
-    while True:
-        # Wait for a connection
-        print("waiting for a connection")
-        connection, client_address = sock.accept()
+        while True:
+            # Wait for a connection
+            print("waiting for a connection")
+            self.connection, client_address = sock.accept()
+            if(self.connection.accept):
+                break
 
+    def get(self):
+        
         try:
-            print(" connection from {}".format(client_address))
-
-            # Receive the data in small chunks and retransmit it
+        # Receive the data in small chunks and retransmit it
             temp = b''
             while True:
-                data = connection.recv(2)
+                data = self.connection.recv(2)
                 temp+=data
-
+            
                 # data = byToString(data)
                 try:
                     a = temp.decode()
                     temp = b''
 
-                    print("{}".format(a))
-                
+                    print("essa é a letra: {}".format(a))
+                    return a
 
                 except UnicodeDecodeError:
                     pass
 
                 if(len(data) <= 0):
                     break
-                
 
-        finally:
-            # Clean up the connection
-            connection.close()
+                time.sleep(0.5) 
+        except:
+            pass       
 
-
-## Convet para String.
-def byToString(value):
-    a = value.decode()
-
-
-    # print(type(a))
-    # b = value.decode('utf-8', 'ignore')
-
-    # b = unicode(a, errors='replace')
-    return value
-
+        # finally:
+        # #     # Clean up the connection
+        #     self.connection.close()
 
 if __name__ == "__main__":
     main()

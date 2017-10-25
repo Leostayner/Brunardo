@@ -1,29 +1,33 @@
-import tkinter as tki # Tkinter -> tkinter in Python3
+import socket
+import sys
 
-class App(object):
+# print(mensagem)
 
-    def __init__(self):
-        self.root = tki.Tk()
+# Create a TCP/IP socket
+sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-    # create a Frame for the Text and Scrollbar
-        txt_frm = tki.Frame(self.root, width=600, height=600)
-        txt_frm.pack(fill="both", expand=True)
-        # ensure a consistent GUI size
-        txt_frm.grid_propagate(False)
-        # implement stretchability
-        txt_frm.grid_rowconfigure(0, weight=1)
-        txt_frm.grid_rowconfigure(1, weight=1)
-        txt_frm.grid_columnconfigure(0, weight=1)
+# Connect the socket to the port where the server is listening
+server_address = ('localhost', 1240)
+print (sys.stderr, 'connecting to %s port %s' % server_address)
+sock.connect(server_address)
 
-    # create a Text widget
-        self.txt = tki.Text(txt_frm, borderwidth=3, relief="sunken")
-        self.txt.config(font=("consolas", 12), undo=True, wrap='word')
-        self.txt.grid(row=0, column=0, sticky="nsew", padx=2, pady=2)
+try:
+    
+    # Send data
+    message = "Oi Léo, vai dar tudo certo com o nosso trabalho"
+    bmessage = str.encode(message)
+    print (sys.stderr, 'sending "%s"' % bmessage)
+    sock.sendall(bmessage)
 
-    # create a Scrollbar and associate it with txt
-        scrollb = tki.Scrollbar(txt_frm, command=self.txt.yview)
-        scrollb.grid(row=0, column=1, sticky='nsew')
-        self.txt['yscrollcommand'] = scrollb.set
+    # Look for the response
+    amount_received = 0
+    amount_expected = len(message)
+    
+    while amount_received < amount_expected:
+        data = sock.recv(16)
+        amount_received += len(data)
+        print (sys.stderr, 'received "%s"' % data)
 
-app = App()
-app.root.mainloop()
+finally:
+    print (sys.stderr, 'closing socket')
+    sock.close()

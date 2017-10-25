@@ -13,8 +13,9 @@ class transmissao():
 
         # Connect the socket to the port where the server is listening
         server_address = ('localhost', 1240)
+        
         print (sys.stderr, 'connecting to %s port %s' % server_address)
-        sock.connect(server_address)
+        sock.connect(server_address) 
 
         try:
             
@@ -29,7 +30,7 @@ class transmissao():
             amount_expected = len(message)
             
             while amount_received < amount_expected:
-                data = sock.recv(16)
+                data = sock.recv(2)
                 amount_received += len(data)
                 print (sys.stderr, 'received "%s"' % data)
 
