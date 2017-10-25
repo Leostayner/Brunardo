@@ -1,4 +1,4 @@
-#Criado por Leonardo Medeiros
+
 import tkinter as tk
 import time
 from datetime import datetime
@@ -6,6 +6,8 @@ import tkinter.messagebox as tkm
 from PIL import ImageTk
 from PIL import Image
 from tkinter import filedialog
+import recepcao as rc
+import transmissao as tr
 
 class Janela_Principal():
     
@@ -52,6 +54,7 @@ class Menu_Principal():
         
 	    #Variavel
         self.var = 1
+        self.ment = tk.StringVar()
 
         # Geometria da pagina        
         self.window1.rowconfigure(0, minsize = self.janela_principal.window_height * 1/5 )
@@ -76,7 +79,7 @@ class Menu_Principal():
         self.scrollb.grid(row = 1, column = 2, sticky='nsew')
         self.txt['yscrollcommand'] = self.scrollb.set
 
-        self.entry = tk.Entry(self.window1, borderwidth = 3)
+        self.entry = tk.Entry(self.window1, borderwidth = 3, textvariable = self.ment)
         self.entry.grid(row = 2, column = 0, columnspan = 2, sticky = "nsew", padx = 2, pady = 2) 
         
         self.button = tk.Button(self.window1, text = "Emissor")
@@ -89,6 +92,7 @@ class Menu_Principal():
 
         self.button3 = tk.Button(self.window1, background = "gray")
         self.button3.grid(row = 2, column = 2,sticky = "nsew", pady = 2)
+        self.button3.configure(command = self.emitir)
 
     def mostrar(self):
         self.window1.tkraise()
@@ -102,6 +106,16 @@ class Menu_Principal():
         print("receber")
         self.button.configure(state = "normal")
         self.button2.configure(state = "disable")
+
+    def emitir(self):
+        print(self.ment.get())
+        tr.transmissao(self.ment.get())  
+        self.txt.insert("end", self.ment.get()+ '\n')
+        self.entry.delete(0, 'end')
+
+           
+
+        
 
 
 app = Janela_Principal()
