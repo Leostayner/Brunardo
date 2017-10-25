@@ -19,8 +19,8 @@ class Janela_Principal():
         self.app_config['window_xpos'] = 100
         self.app_config['window_ypos'] = 100
         
-        self.window_width  = 400
-        self.window_height = 500    
+        self.window_width  = 350
+        self.window_height = 450    
 
         self.window = tk.Tk()
         self.window.geometry("{}x{}+{}+{}".format(self.window_width, 
@@ -28,7 +28,7 @@ class Janela_Principal():
                                                   self.app_config['window_xpos'], 
                                                   self.app_config['window_ypos']))
         self.window.title("BruNardo")
-        self.window.resizable(False, False)
+        #self.window.resizable(False, False)
     
         # Geometria da pagina
         self.window.rowconfigure(0, minsize = self.window_height)
@@ -63,13 +63,12 @@ class Menu_Principal():
         self.ment = tk.StringVar()
 
         # Geometria da pagina        
-        self.window1.rowconfigure(0, minsize = self.janela_principal.window_height * 1/5 )
-        self.window1.rowconfigure(1, minsize = self.janela_principal.window_height * 3/5 )
-        self.window1.rowconfigure(2, minsize = self.janela_principal.window_height * 0.5/5 )
-        self.window1.rowconfigure(3, minsize = self.janela_principal.window_height * 0.5/5 )
+        self.window1.rowconfigure(0, minsize = self.janela_principal.window_height * 2/8 - 20)
+        self.window1.rowconfigure(1, minsize = self.janela_principal.window_height * 5/8 )
+        self.window1.rowconfigure(2, minsize = self.janela_principal.window_height * 1/8 )
+    
 
-
-        self.window1.columnconfigure(0, minsize = self.janela_principal.window_width * 10/20)
+        self.window1.columnconfigure(0, minsize = self.janela_principal.window_width * 10/20 - 10)
         self.window1.columnconfigure(1, minsize = self.janela_principal.window_width * 9/20)
         self.window1.columnconfigure(2, minsize = (self.janela_principal.window_width * 1/20) - 2)
                 
@@ -81,21 +80,13 @@ class Menu_Principal():
         self.txt.config(font = ("consolas", 12))
         self.txt.grid(row = 1, column = 0, columnspan = 2, sticky = "nsew", padx = 2, pady = 2)
 
-        self.scrollb = tk.Scrollbar(self.window1, command = self.txt.yview)
-        self.scrollb.grid(row = 1, column = 2, sticky='nsew')
+        self.scrollb = tk.Scrollbar(self.window1, command = self.txt.yview, borderwidth = 3)
+        self.scrollb.grid(row = 1, column = 2, sticky='nsew',  padx = 2, pady = 2)
         self.txt['yscrollcommand'] = self.scrollb.set
 
         self.entry = tk.Entry(self.window1, borderwidth = 3, textvariable = self.ment)
         self.entry.grid(row = 2, column = 0, columnspan = 2, sticky = "nsew", padx = 2, pady = 2) 
         
-        self.button = tk.Button(self.window1, text = "Leonardo")
-        self.button.grid(row = 3, column = 0, sticky = "nsew")
-        self.button.configure(command = self.P1)
-
-        self.button2 = tk.Button(self.window1, text = "Bruna")
-        self.button2.grid(row = 3, column = 1, columnspan = 2, sticky = "nsew")
-        self.button2.configure(command = self.P2)
-
         self.button3 = tk.Button(self.window1, background = "gray")
         self.button3.grid(row = 2, column = 2,sticky = "nsew", pady = 2)
         self.button3.configure(command = self.emitir)
@@ -105,17 +96,6 @@ class Menu_Principal():
     def mostrar(self):
         self.window1.tkraise()
     
-    def P1(self):
-        self.button2.configure(state = "normal")
-        self.button.configure(state = "disable")
-        print("enviar")
-
-    def P2(self):
-        self.portaEnviar = 1234
-        self.portaReceber = 4321
-        self.button.configure(state = "normal")
-        self.button2.configure(state = "disable")
-
     def emitir(self):
         print(self.ment.get())
         tr.transmissao(self.ment.get())  

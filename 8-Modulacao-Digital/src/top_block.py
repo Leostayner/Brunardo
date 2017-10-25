@@ -67,7 +67,7 @@ class top_block(gr.top_block, Qt.QWidget):
         self.samp_rate_0 = samp_rate_0 = 44.1E3
         self.samp_rate = samp_rate = 32000
         self.rrc_taps = rrc_taps = firdes.root_raised_cosine(nfilts, nfilts, 1.0/float(sps), 0.35, 45*nfilts)
-        self.fc_slider = fc_slider = 2200
+        self.fc_slider = fc_slider = 4400
         self.BPSK = BPSK = digital.constellation_calcdist(([-1, 1]), ([0, 1]), 4, 1).base()
         self.A_slider = A_slider = 1
 
