@@ -24,15 +24,7 @@ class transmissao():
             bmessage = str.encode(message)
             print (sys.stderr, 'sending "%s"' % bmessage)
             sock.sendall(bmessage)
-
-            # Look for the response
-            amount_received = 0
-            amount_expected = len(message)
             
-            while amount_received < amount_expected:
-                data = sock.recv(2)
-                amount_received += len(data)
-                print (sys.stderr, 'received "%s"' % data)
 
         finally:
             print (sys.stderr, 'closing socket')

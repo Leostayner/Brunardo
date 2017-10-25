@@ -1,10 +1,10 @@
-
+import threading
 import tkinter as tk
 import time
 from datetime import datetime
 import tkinter.messagebox as tkm
-from PIL import ImageTk
-from PIL import Image
+#from PIL import ImageTk
+#from PIL import Image
 from tkinter import filedialog
 import recepcao as rc
 import transmissao as tr
@@ -73,8 +73,8 @@ class Menu_Principal():
         self.window1.columnconfigure(1, minsize = self.janela_principal.window_width * 9/20)
         self.window1.columnconfigure(2, minsize = (self.janela_principal.window_width * 1/20) - 2)
                 
-        self.Logo = ImageTk.PhotoImage(Image.open("./interface_imgs/Logo.png"))
-        self.Logo_label = tk.Label(self.window1, image = self.Logo )
+        #self.Logo = ImageTk.PhotoImage(Image.open("./interface_imgs/Logo.png"))
+        self.Logo_label = tk.Label(self.window1)
         self.Logo_label.grid(row = 0, column = 0, columnspan = 3, sticky = "nsew", )
        
         self.txt = tk.Text(self.window1, borderwidth = 3, height = 15, width = 20)
@@ -88,32 +88,31 @@ class Menu_Principal():
         self.entry = tk.Entry(self.window1, borderwidth = 3, textvariable = self.ment)
         self.entry.grid(row = 2, column = 0, columnspan = 2, sticky = "nsew", padx = 2, pady = 2) 
         
-        self.button = tk.Button(self.window1, text = "Emissor")
+        self.button = tk.Button(self.window1, text = "Leonardo")
         self.button.grid(row = 3, column = 0, sticky = "nsew")
-        self.button.configure(command = self.enviar)
+        self.button.configure(command = self.P1)
 
-        self.button2 = tk.Button(self.window1, text = "Receptor")
+        self.button2 = tk.Button(self.window1, text = "Bruna")
         self.button2.grid(row = 3, column = 1, columnspan = 2, sticky = "nsew")
-        self.button2.configure(command = self.receber)
+        self.button2.configure(command = self.P2)
 
         self.button3 = tk.Button(self.window1, background = "gray")
         self.button3.grid(row = 2, column = 2,sticky = "nsew", pady = 2)
         self.button3.configure(command = self.emitir)
 
-        
+        self.threadStart()
 
     def mostrar(self):
         self.window1.tkraise()
     
-    def enviar(self):
+    def P1(self):
         self.button2.configure(state = "normal")
         self.button.configure(state = "disable")
         print("enviar")
 
-    def receber(self):
-        print("receber")
-        # self.window1.after(100, self.getText)
-        self.getText()
+    def P2(self):
+        self.portaEnviar = 1234
+        self.portaReceber = 4321
         self.button.configure(state = "normal")
         self.button2.configure(state = "disable")
 
@@ -123,12 +122,23 @@ class Menu_Principal():
         self.txt.insert("end", self.ment.get()+ '\n')
         self.entry.delete(0, 'end')
 
-    def getText(self):
-        print("func")
-        self.texto = self.rx.get()
-        print("lalala", self.texto)
-        self.txt.insert("end", self.texto)
-        self.window1.after(100, self.getText)
+    def threadStart(self):
+        """ Starts RX thread (generate and run)
+        """
+        print("iniciado")
+        self.thread = threading.Thread(target=self.thread, args=())
+        self.thread.start()
+
+    def thread(self):
+        """ RX thread, to send data in parallel with the code
+        """
+        while True:
+            print("Tred")
+            self.texto = self.rx.get()
+            print("Caracter: ", self.texto)
+            self.txt.insert("end", self.texto)
+            time.sleep(0.001)
+
 
 app = Janela_Principal()
 app.iniciar()

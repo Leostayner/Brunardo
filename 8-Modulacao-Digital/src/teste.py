@@ -14,7 +14,7 @@ sock.connect(server_address)
 try:
     
     # Send data
-    message = "Oi Léo, vai dar tudo certo com o nosso trabalho"
+    message = "Oi Leo, vai dar tudo certo com o nosso trabalho"
     bmessage = str.encode(message)
     print (sys.stderr, 'sending "%s"' % bmessage)
     sock.sendall(bmessage)
