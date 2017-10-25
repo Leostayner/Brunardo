@@ -3,7 +3,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Wed Oct 25 19:59:36 2017
+# Generated: Wed Oct 25 21:22:42 2017
 ##################################################
 
 if __name__ == '__main__':
@@ -63,18 +63,26 @@ class top_block(gr.top_block, Qt.QWidget):
         ##################################################
         self.sps = sps = 45
         self.nfilts = nfilts = 25
+        self.sps_slider = sps_slider = 45
         self.samp_rate_0 = samp_rate_0 = 44.1E3
         self.samp_rate = samp_rate = 32000
         self.rrc_taps = rrc_taps = firdes.root_raised_cosine(nfilts, nfilts, 1.0/float(sps), 0.35, 45*nfilts)
         self.fc_slider = fc_slider = 2200
         self.BPSK = BPSK = digital.constellation_calcdist(([-1, 1]), ([0, 1]), 4, 1).base()
+        self.A_slider = A_slider = 1
 
         ##################################################
         # Blocks
         ##################################################
+        self._sps_slider_range = Range(0, 100, 5, 45, 200)
+        self._sps_slider_win = RangeWidget(self._sps_slider_range, self.set_sps_slider, "sps", "counter_slider", float)
+        self.top_layout.addWidget(self._sps_slider_win)
         self._fc_slider_range = Range(0, 18200, 200, 2200, 150)
         self._fc_slider_win = RangeWidget(self._fc_slider_range, self.set_fc_slider, "fc", "counter_slider", float)
         self.top_layout.addWidget(self._fc_slider_win)
+        self._A_slider_range = Range(0, 20, 1, 1, 200)
+        self._A_slider_win = RangeWidget(self._A_slider_range, self.set_A_slider, "A", "counter_slider", int)
+        self.top_layout.addWidget(self._A_slider_win)
         self.qtgui_time_sink_x_0 = qtgui.time_sink_f(
         	1024, #size
         	samp_rate, #samp_rate
@@ -124,7 +132,7 @@ class top_block(gr.top_block, Qt.QWidget):
         self.digital_constellation_modulator_0 = digital.generic_mod(
           constellation=BPSK,
           differential=True,
-          samples_per_symbol=sps,
+          samples_per_symbol=sps_slider,
           pre_diff_code=True,
           excess_bw=0.25,
           verbose=False,
@@ -148,7 +156,7 @@ class top_block(gr.top_block, Qt.QWidget):
         	payload_length=1,
         )
         self.audio_sink_0 = audio.sink(44100, "", True)
-        self.analog_sig_source_x_0 = analog.sig_source_c(samp_rate, analog.GR_COS_WAVE, fc_slider, 1, 0)
+        self.analog_sig_source_x_0 = analog.sig_source_c(samp_rate, analog.GR_COS_WAVE, fc_slider, A_slider, 0)
 
         ##################################################
         # Connections
@@ -180,6 +188,12 @@ class top_block(gr.top_block, Qt.QWidget):
     def set_nfilts(self, nfilts):
         self.nfilts = nfilts
         self.set_rrc_taps(firdes.root_raised_cosine(self.nfilts, self.nfilts, 1.0/float(self.sps), 0.35, 45*self.nfilts))
+
+    def get_sps_slider(self):
+        return self.sps_slider
+
+    def set_sps_slider(self, sps_slider):
+        self.sps_slider = sps_slider
 
     def get_samp_rate_0(self):
         return self.samp_rate_0
@@ -213,6 +227,13 @@ class top_block(gr.top_block, Qt.QWidget):
 
     def set_BPSK(self, BPSK):
         self.BPSK = BPSK
+
+    def get_A_slider(self):
+        return self.A_slider
+
+    def set_A_slider(self, A_slider):
+        self.A_slider = A_slider
+        self.analog_sig_source_x_0.set_amplitude(self.A_slider)
 
 
 def main(top_block_cls=top_block, options=None):
