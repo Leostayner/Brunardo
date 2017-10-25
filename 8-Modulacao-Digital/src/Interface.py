@@ -3,7 +3,7 @@ import tkinter as tk
 import time
 from datetime import datetime
 import tkinter.messagebox as tkm
-#from PIL import ImageTk
+from PIL import ImageTk
 from PIL import Image
 from tkinter import filedialog
 
@@ -17,8 +17,8 @@ class Janela_Principal():
         self.app_config['window_xpos'] = 100
         self.app_config['window_ypos'] = 100
         
-        self.window_width  = self.app_config['width_button'] * 2
-        self.window_height = self.app_config['height_button'] * 3
+        self.window_width  = 400
+        self.window_height = 500    
 
         self.window = tk.Tk()
         self.window.geometry("{}x{}+{}+{}".format(self.window_width, 
@@ -54,47 +54,55 @@ class Menu_Principal():
         self.var = 1
 
         # Geometria da pagina        
-        self.window1.rowconfigure(0, minsize = self.janela_principal.app_config['height_button'] - 50)
-        self.window1.rowconfigure(1, minsize = self.janela_principal.app_config['height_button'])
-        self.window1.rowconfigure(2, minsize = self.janela_principal.app_config['height_button'])
+        self.window1.rowconfigure(0, minsize = self.janela_principal.window_height * 1/5 )
+        self.window1.rowconfigure(1, minsize = self.janela_principal.window_height * 3/5 )
+        self.window1.rowconfigure(2, minsize = self.janela_principal.window_height * 0.5/5 )
+        self.window1.rowconfigure(3, minsize = self.janela_principal.window_height * 0.5/5 )
 
-        self.window1.columnconfigure(0, minsize = self.janela_principal.window_width)
+
+        self.window1.columnconfigure(0, minsize = self.janela_principal.window_width * 10/20)
+        self.window1.columnconfigure(1, minsize = self.janela_principal.window_width * 9/20)
+        self.window1.columnconfigure(2, minsize = (self.janela_principal.window_width * 1/20) - 2)
                 
-        #self.Logo = ImageTk.PhotoImage(Image.open("./interface_imgs/Logo.png"))
-        self.Logo_label = tk.Label(self.window1)
-        self.Logo_label.grid(row = 0, column = 0, sticky = "nsew")
+        self.Logo = ImageTk.PhotoImage(Image.open("./interface_imgs/Logo.png"))
+        self.Logo_label = tk.Label(self.window1, image = self.Logo )
+        self.Logo_label.grid(row = 0, column = 0, columnspan = 3, sticky = "nsew", )
+       
+        self.txt = tk.Text(self.window1, borderwidth = 3, height = 15, width = 20)
+        self.txt.config(font = ("consolas", 12))
+        self.txt.grid(row = 1, column = 0, columnspan = 2, sticky = "nsew", padx = 2, pady = 2)
+
+        self.scrollb = tk.Scrollbar(self.window1, command = self.txt.yview)
+        self.scrollb.grid(row = 1, column = 2, sticky='nsew')
+        self.txt['yscrollcommand'] = self.scrollb.set
+
+        self.entry = tk.Entry(self.window1, borderwidth = 3)
+        self.entry.grid(row = 2, column = 0, columnspan = 2, sticky = "nsew", padx = 2, pady = 2) 
         
+        self.button = tk.Button(self.window1, text = "Emissor")
+        self.button.grid(row = 3, column = 0, sticky = "nsew")
+        self.button.configure(command = self.enviar)
 
-        #self.txt = tk.Text(self.window1, height = 15, width = 30)
-        #self.txt.grid(row = 1, column = 0, sticky = "nsew")
-        #self.txt.configure(state = "disabled")
+        self.button2 = tk.Button(self.window1, text = "Receptor")
+        self.button2.grid(row = 3, column = 1, columnspan = 2, sticky = "nsew")
+        self.button2.configure(command = self.receber)
 
-        self.scrool = tk.Scrollbar(self.window1)
-        
-        self.txt = tk.Text(self.window1, height=4, width=50)
-        self.txt.grid(row = 1, column = 0)
-        self.scrool.grid(row = 1, column = 0)
-        self.scrool.config(command= self.txt.yview)
-        self.txt.config(yscrollcommand= self.scrool.set)
-        quote = """HAMLET: To be, or not to be--that is the question:
-        Whether 'tis nobler in the mind to suffer
-        The slings and arrows of outrageous fortune
-        Or to take arms against a sea of troubles
-        And by opposing end them. To die, to sleep--
-        No more--and by a sleep to say we end
-        The heartache, and the thousand natural shocks
-        That flesh is heir to. 'Tis a consummation
-        Devoutly to be wished."""
-        self.txt.insert("end", quote)
-
-
-#        self.button2 = tk.Radiobutton(self.window1)
-#        self.button2.configure(variable = self.var, value = 2)
-#        self.button2.grid(row = 2, column = 0)
-
+        self.button3 = tk.Button(self.window1, background = "gray")
+        self.button3.grid(row = 2, column = 2,sticky = "nsew", pady = 2)
 
     def mostrar(self):
         self.window1.tkraise()
     
+    def enviar(self):
+        self.button2.configure(state = "normal")
+        self.button.configure(state = "disable")
+        print("enviar")
+
+    def receber(self):
+        print("receber")
+        self.button.configure(state = "normal")
+        self.button2.configure(state = "disable")
+
+
 app = Janela_Principal()
 app.iniciar()
