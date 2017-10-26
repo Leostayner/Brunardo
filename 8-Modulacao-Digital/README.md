@@ -46,27 +46,39 @@ não conseguimos obter ese gráfico
 
 ### Gráfico no tempo e em frequência do sinal codificado
 ![Img 10](imagem/TX_tempo_codificado.png)
-
-Gráfico de modulação que altera a fase da portadora para cada simbolo.
+Gráfico do sinal codificado, o qual apresenta valores de 0 e 1, que representao os valores binarios em função do tempo. 
 
 ![Img 11](imagem/TX_frequencia_codificado.png)
+Gráfico do sinal codificado, que representa os vlores binarios em função da frequência.
 
 ### Gráfico no tempo e em frequência do sinal modulado
 ![Img 2](imagem/TX_tempo_modulado.png)  
+Gráfico do sinal modulado em função do tempo, com alteração apenas da frequencia  do sinal codificado
+
 ![Img 3](imagem/TX_frequencia_modulado.png)
+Gráfico do sinal modulado em função da frequencia, com alteração apenas da frequencia do sinal codificado, há o deslocamento do sinal ao multiplica-la pela portadora 
 
 ### Diagrama de constelação
 ![Img 4](imagem/TX_constelação.png)
+Grafico da representação dos Simbolos.
 
 ## RX:
 
 ### Sinal de áudio recebido no tempo e em frequência
 ![Img 5](imagem/RX_tempo_recebido.png)
+Gráfico do sinal recebido em função do tempo, similar ao grafico no tempo do sinal modulado
+
 ![Img 6](imagem/RX_frequencia_recebido.png)
+Gráfico do sinal recebido em função da frequência, similar ao gráfico em frequência do sinal modulado 
 
 ### Sinal de áudio demodulado no tempo e em frequência
 ![Img 7](imagem/RX_tempo_demodulado.png)
+Gráfico do sinal demodulado em função do tempo, similar ao gráfico no tempo do sinal codificado 
+
 ![Img 8](imagem/RX_frequencia_demodulado.png)
+Gráfico do sinal demodulado em função da frequância, similar ao gráfico em frequência do sinal codificado
 
 ### Diagrama de constelação.
 ![Img 9](imagem/RX_costelação.png)
+Diagrama de costelação, pode-se notar a distribuição dos pontos nas regioes dos simbolos representados por 0 e 1.
+
