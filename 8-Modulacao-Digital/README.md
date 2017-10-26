@@ -45,11 +45,11 @@ Também, é possível alterar a Amplitude (A) em um range de 0 à 20, e está se
 não conseguimos obter ese gráfico
 
 ### Gráfico no tempo e em frequência do sinal codificado
-(imagem/TX_tempo_codificado.png)
+![Img 10](imagem/TX_tempo_codificado.png)
 
 Gráfico de modulação que altera a fase da portadora para cada simbolo.
 
-(imagem/TX_frequencia_codificado.png)
+![Img 11](imagem/TX_frequencia_codificado.png)
 
 ### Gráfico no tempo e em frequência do sinal modulado
 ![Img 2](imagem/TX_tempo_modulado.png)  
