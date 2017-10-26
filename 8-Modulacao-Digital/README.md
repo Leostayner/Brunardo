@@ -60,7 +60,7 @@ Gráfico do sinal modulado em função da frequencia, com alteração apenas da 
 
 ### Diagrama de constelação
 ![Img 4](imagem/TX_constelação.png)
-Grafico da representação dos Simbolos enviados.
+Diagrama da representação dos Simbolos enviados.
 
 ## RX:
 
