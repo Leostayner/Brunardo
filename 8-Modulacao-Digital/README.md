@@ -35,7 +35,7 @@ Esses sinais podem conter erros ocasionados pela presença de ruidos, o que pode
 
 ## TX:
 
-imagem/TX_slider.png
+![Img 1](imagem/TX_slider.png)
 
 Nesta barra podemo variar a frequência (fc) em um range de 0 à x, e está setado para começar em 2.2kHz ou 4.4kHz dependendo do qual o usuário escolher.
 Também, é possível alterar a Amplitude (A) em um range de 0 à 20, e está setado para iniciar com 5 e o sps com um range de 0 a 100, iniciando em 45.
@@ -52,21 +52,21 @@ Gráfico de modulação que altera a fase da portadora para cada simbolo.
 (imagem/TX_frequencia_codificado.png)
 
 ### Gráfico no tempo e em frequência do sinal modulado
-![Img 1](imagem/TX_tempo_modulado.png)  
-(imagem/TX_frequencia_modulado.png)
+![Img 2](imagem/TX_tempo_modulado.png)  
+![Img 3](imagem/TX_frequencia_modulado.png)
 
 ### Diagrama de constelação
-(imagem/TX_constelação.png)
+![Img 4](imagem/TX_constelação.png)
 
 ## RX:
 
 ### Sinal de áudio recebido no tempo e em frequência
-(imagem/RX_tempo_recebido.png)
-(imagem/RX_frequencia_recebido.png)
+![Img 5](imagem/RX_tempo_recebido.png)
+![Img 6](imagem/RX_frequencia_recebido.png)
 
 ### Sinal de áudio demodulado no tempo e em frequência
-(imagem/RX_tempo_demodulado.png)
-(imagem/RX_frequencia_demodulado.png)
+![Img 7](imagem/RX_tempo_demodulado.png)
+![Img 8](imagem/RX_frequencia_demodulado.png)
 
 ### Diagrama de constelação.
-(imagem/RX_constelação.png)
+![Img 9](imagem/RX_constelação.png)
