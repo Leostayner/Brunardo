@@ -35,7 +35,7 @@ Esses sinais podem conter erros ocasionados pela presença de ruidos, o que pode
 
 ## TX:
 
-(imagem/TX_slider.png)
+imagem/TX_slider.png
 
 Nesta barra podemo variar a frequência (fc) em um range de 0 à x, e está setado para começar em 2.2kHz ou 4.4kHz dependendo do qual o usuário escolher.
 Também, é possível alterar a Amplitude (A) em um range de 0 à 20, e está setado para iniciar com 5 e o sps com um range de 0 a 100, iniciando em 45.
@@ -52,7 +52,7 @@ Gráfico de modulação que altera a fase da portadora para cada simbolo.
 (imagem/TX_frequencia_codificado.png)
 
 ### Gráfico no tempo e em frequência do sinal modulado
-(imagem/TX_tempo_modulado.png)
+![Img 1](imagem/TX_tempo_modulado.png)  
 (imagem/TX_frequencia_modulado.png)
 
 ### Diagrama de constelação
