@@ -68,11 +68,11 @@ class Menu_Principal():
         self.window1.rowconfigure(2, minsize = self.janela_principal.window_height * 1/8 )
     
 
-        self.window1.columnconfigure(0, minsize = self.janela_principal.window_width * 10/20 - 10)
+        self.window1.columnconfigure(0, minsize = self.janela_principal.window_width * 10/20 - 5)
         self.window1.columnconfigure(1, minsize = self.janela_principal.window_width * 9/20)
         self.window1.columnconfigure(2, minsize = (self.janela_principal.window_width * 1/20) - 2)
                 
-        self.Logo = ImageTk.PhotoImage(Image.open("./interface_imgs/brunardio.png"))
+        self.Logo = ImageTk.PhotoImage(Image.open("./interface_imgs/brunardio2.png"))
         self.Logo_label = tk.Label(self.window1, image = self.Logo)
         self.Logo_label.grid(row = 0, column = 0, columnspan = 3, sticky = "nsew")
        
