@@ -3,8 +3,8 @@ import tkinter as tk
 import time
 from datetime import datetime
 import tkinter.messagebox as tkm
-#from PIL import ImageTk
-#from PIL import Image
+from PIL import ImageTk
+from PIL import Image
 from tkinter import filedialog
 import recepcao as rc
 import transmissao as tr
@@ -72,12 +72,12 @@ class Menu_Principal():
         self.window1.columnconfigure(1, minsize = self.janela_principal.window_width * 9/20)
         self.window1.columnconfigure(2, minsize = (self.janela_principal.window_width * 1/20) - 2)
                 
-        #self.Logo = ImageTk.PhotoImage(Image.open("./interface_imgs/Logo.png"))
-        self.Logo_label = tk.Label(self.window1)
-        self.Logo_label.grid(row = 0, column = 0, columnspan = 3, sticky = "nsew", )
+        self.Logo = ImageTk.PhotoImage(Image.open("./interface_imgs/brunardio.png"))
+        self.Logo_label = tk.Label(self.window1, image = self.Logo)
+        self.Logo_label.grid(row = 0, column = 0, columnspan = 3, sticky = "nsew")
        
         self.txt = tk.Text(self.window1, borderwidth = 3, height = 15, width = 20)
-        self.txt.config(font = ("consolas", 12))
+        self.txt.config(font = ("typewriter", 12))
         self.txt.grid(row = 1, column = 0, columnspan = 2, sticky = "nsew", padx = 2, pady = 2)
 
         self.scrollb = tk.Scrollbar(self.window1, command = self.txt.yview, borderwidth = 3)
