@@ -28,8 +28,7 @@ Já na recepção há a detecçao de simbolos a partir do sinal recebido, esses 
 Esses sinais podem conter erros ocasionados pela presença de ruidos, o que pode fornecer um simbolo falso. 
 
 # Modulação BPSK
-
-
+Neste tipo de modulação, a característica da onda portadora que vai variar é a fase, deixando a amplitude e a freqüência constantes. Esta modulação também é conhecida como
 
 # GNURadio
 
@@ -53,10 +52,10 @@ Gráfico do sinal codificado, que representa os vlores binarios em função da f
 
 ### Gráfico no tempo e em frequência do sinal modulado
 ![Img 2](imagem/TX_tempo_modulado.png)  
-Gráfico do sinal modulado em função do tempo, com alteração apenas da frequencia  do sinal codificado
+Gráfico do sinal modulado em função do tempo, com alteração apenas da fase do sinal codificado
 
 ![Img 3](imagem/TX_frequencia_modulado.png)
-Gráfico do sinal modulado em função da frequencia, com alteração apenas da frequencia do sinal codificado, há o deslocamento do sinal ao multiplica-la pela portadora 
+Gráfico do sinal modulado em função da frequencia, com alteração apenas da fase do sinal codificado, há o deslocamento do sinal ao multiplica-la pela portadora 
 
 ### Diagrama de constelação
 ![Img 4](imagem/TX_constelação.png)
