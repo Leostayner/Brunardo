@@ -87,16 +87,18 @@ class Menu_Principal():
         self.entry = tk.Entry(self.window1, borderwidth = 3, textvariable = self.ment)
         self.entry.grid(row = 2, column = 0, columnspan = 2, sticky = "nsew", padx = 2, pady = 2) 
         
-        self.button3 = tk.Button(self.window1, background = "gray")
-        self.button3.grid(row = 2, column = 2,sticky = "nsew", pady = 2)
-        self.button3.configure(command = self.emitir)
+        self.entry.bind("<Return>",self.emitir)
+
+        #self.button3 = tk.Button(self.window1, background = "gray")
+        #self.button3.grid(row = 2, column = 2,sticky = "nsew", pady = 2)
+        #self.button3.configure(command = self.emitir)
 
         self.threadStart()
 
     def mostrar(self):
         self.window1.tkraise()
     
-    def emitir(self):
+    def emitir(self,event):
         print(self.ment.get())
         tr.transmissao(self.ment.get())  
         self.txt.insert("end", self.ment.get()+ '\n')
