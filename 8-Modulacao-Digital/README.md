@@ -69,4 +69,4 @@ Gráfico de modulação que altera a fase da portadora para cada simbolo.
 ![Img 8](imagem/RX_frequencia_demodulado.png)
 
 ### Diagrama de constelação.
-![Img 9](imagem/RX_constelação.png)
+![Img 9](imagem/RX_costelação.png)
