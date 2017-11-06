@@ -85,7 +85,7 @@ class Menu_Principal():
         self.txt['yscrollcommand'] = self.scrollb.set
 
         self.entry = tk.Entry(self.window1, borderwidth = 3, textvariable = self.ment)
-        self.entry.grid(row = 2, column = 0, columnspan = 2, sticky = "nsew", padx = 2, pady = 2) 
+        self.entry.grid(row = 2, column = 0, columnspan = 3, sticky = "nsew", padx = 2, pady = 2) 
         
         self.entry.bind("<Return>",self.emitir)
 
