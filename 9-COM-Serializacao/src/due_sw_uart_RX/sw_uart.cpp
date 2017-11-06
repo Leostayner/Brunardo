@@ -56,17 +56,23 @@ int sw_uart_receive_byte(due_sw_uart *uart, char* data) {
   
   // checa se bit ainda é 0
       if(digitalRead(uart->pin_rx) == 0 )
+        _sw_uart_wait_T(uart);
         bollean = true;
   
   // recebe dados
   for(int i = 0 ; i < 1; i++){
-    nchar += (digitalRead(uart->pin_rx) << i || 0x01);    
+    nchar = nchar || (digitalRead(uart->pin_rx) << i);  
+    _sw_uart_wait_T(uart);
   }
   
   // recebe paridade
+    rx_parity = digitalRead(uart->pin_rx)
+    _sw_uart_wait_T(uart);
 
   // recebe stop bit
-  
+    char stop = digitalRead(uart->pin_rx;
+    _sw_uart_wait_T(uart);
+
   // checa paridade
   if(parity != rx_parity) {
     return SW_UART_ERROR_PARITY;
