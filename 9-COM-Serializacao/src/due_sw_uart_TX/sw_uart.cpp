@@ -26,7 +26,7 @@ void sw_uart_write_string(due_sw_uart *uart, char* stringData) {
 // retorna paridade
 int calc_even_parity(char data) {
   int Sum = 0;
-  for(int i = 0; i <= 1; i++){
+  for(int i = 0; i <= 7; i++){
     Sum += data >> i & 0x01;   
   }
   
@@ -57,7 +57,7 @@ void sw_uart_write_byte(due_sw_uart *uart, char data) {
   
   // envia payload
   for(int i = 0; i < uart->databits; i++) {
-    int var = data >> 7 & 0x01;
+    int var = data >> i & 0x01;
     digitalWrite(uart->pin_tx, var);
     _sw_uart_wait_T(uart);
   }
@@ -65,11 +65,13 @@ void sw_uart_write_byte(due_sw_uart *uart, char data) {
   // envia paridade, se existir
   if(uart->paritybit != SW_UART_NO_PARITY) {
     digitalWrite(uart -> pin_tx, parity);
+    _sw_uart_wait_T(uart);
   }
   
   // envia stop bit, se existir
   for(int i = 0; i < uart->stopbits; i++) {
        digitalWrite(uart->pin_tx, HIGH);
+       _sw_uart_wait_T(uart);
   } 
 }
 

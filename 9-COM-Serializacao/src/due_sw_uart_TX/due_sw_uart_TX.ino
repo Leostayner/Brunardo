@@ -11,8 +11,7 @@ void loop() {
 }
 
 void test_write() {
-  //sw_uart_write_string(&uart,"Cam-Fisica\n");
-  Serial.print(calc_even_parity('c'));
+  sw_uart_write_string(&uart,"Qualque Coisa Mesmo\n");
   delay(50);
 }
 
