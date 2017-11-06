@@ -47,18 +47,20 @@ int sw_uart_receive_byte(due_sw_uart *uart, char* data) {
   char parity, rx_parity;
   
   // aguarda start bit
-  boolean = false;
-  while(!bollean):
+  char vericidade = false;
+  while(vericidade == false){
   
   // Confirma start BIT
-    if (digitalRead(uart->pin_rx) == 0 )
+    if (digitalRead(uart->pin_rx) == 0 ){
       _sw_uart_wait_half_T(uart);
+      }
   
   // checa se bit ainda é 0
-      if(digitalRead(uart->pin_rx) == 0 )
+      if(digitalRead(uart->pin_rx) == 0 ){
         _sw_uart_wait_T(uart);
-        bollean = true;
-  
+        vericidade = true;
+        }
+  }
   // recebe dados
   for(int i = 0 ; i < 1; i++){
     nchar = nchar || (digitalRead(uart->pin_rx) << i);  
@@ -66,11 +68,11 @@ int sw_uart_receive_byte(due_sw_uart *uart, char* data) {
   }
   
   // recebe paridade
-    rx_parity = digitalRead(uart->pin_rx)
+    rx_parity = digitalRead(uart->pin_rx);
     _sw_uart_wait_T(uart);
 
   // recebe stop bit
-    char stop = digitalRead(uart->pin_rx;
+    char stop = digitalRead(uart->pin_rx);
     _sw_uart_wait_T(uart);
 
   // checa paridade
