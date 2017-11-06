@@ -11,7 +11,8 @@ void loop() {
 }
 
 void test_write() {
-  sw_uart_write_string(&uart,"Cam-Fisica\n");
+  //sw_uart_write_string(&uart,"Cam-Fisica\n");
+  calc_even_parity("C");
   delay(50);
 }
 

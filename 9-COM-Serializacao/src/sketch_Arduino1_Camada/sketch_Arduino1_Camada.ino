@@ -7,7 +7,7 @@ void setup() {
  }
  
  void test_write() {
-     Serial1.write("Cam Fisica");
+     Serial1.write("Cam Fisica \n");
      delay(1);
  }
  
