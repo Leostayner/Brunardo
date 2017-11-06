@@ -62,7 +62,7 @@ int sw_uart_receive_byte(due_sw_uart *uart, char* data) {
         }
   }
   // recebe dados
-  for(int i = 0 ; i < 1; i++){
+  for(int i = 0 ; i < 7; i++){
     nchar = nchar || (digitalRead(uart->pin_rx) << i);  
     _sw_uart_wait_T(uart);
   }

@@ -57,7 +57,7 @@ void sw_uart_write_byte(due_sw_uart *uart, char data) {
   
   // envia payload
   for(int i = 0; i < uart->databits; i++) {
-    int var = data >> i & 0x01;
+    int var = data >> 7 & 0x01;
     digitalWrite(uart->pin_tx, var);
     _sw_uart_wait_T(uart);
   }
