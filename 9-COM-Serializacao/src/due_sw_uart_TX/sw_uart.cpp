@@ -31,7 +31,6 @@ int calc_even_parity(char data) {
   }
   
   int paridade = Sum % 2;
-  Serial.print(paridade);
   if (paridade == 0){
    return 1; 
   }
