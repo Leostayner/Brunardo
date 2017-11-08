@@ -9,7 +9,8 @@ date: Outubro - 2017
 Esse propjeto consiste em...........
 
 ## Protocolo Uart
-	O protocolo uart é representado pelo seguinte modelo:
+
+O protocolo uart é representado pelo seguinte modelo:
 
 ![Img 1](doc/imagem1.png)
 
@@ -36,11 +37,13 @@ stop bit (0)
 
 ### Tx
 #### calculo de paridade
-	Para calcular a paridade foi somado cada bit do dado recebido, verificando se a soma era impar ou par, e retornando o valor de paridade 
+
+Para calcular a paridade foi somado cada bit do dado recebido, verificando se a soma era impar ou par, e retornando o valor de paridade 
 1 caso par, e 0 caso impar. 
 	
 #### envia start bit
-	Escreve no pino tx o valor 1;
+
+Escreve no pino tx o valor 1;
 	
 #### envia payload
 
