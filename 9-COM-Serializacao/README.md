@@ -14,14 +14,10 @@ O protocolo uart é representado pelo seguinte modelo:
 
 ![Img 1](doc/image1.png)
 
-O processo inicia com o envio constante do sinal high(1) que indica o estado inicial do sistema e serve como forma de conecção entre os dois computadores.
-o inicio da recepção de dados ocorre ao receber um start bit, ou seja um bit 0 (Low). Logo em seguida, começa o envio dos dados(payload) a partir do bits 
-menos significativo, em seguida se envia o bit de paridade, que é utilizado para detectar erros na transmissâo, para finalizar o envio desse packote o 
-stopbit é transmitido, um bit de valor 1 que retorna para o estado inicial de conecção.
+O processo inicia com o envio constante do sinal high(1) que indica o estado inicial do sistema e serve como forma de conecção entre os dois computadores. O inicio da recepção de dados ocorre ao receber um start bit, ou seja um bit 0 (Low). Logo em seguida, começa o envio dos dados(payload) a partir do bits menos significativo, em seguida se envia o bit de paridade, que é utilizado para detectar erros na transmissâo, para finalizar o envio desse packote o stopbit é transmitido, um bit de valor 1 que retorna para o estado inicial de conecção.
 
 ## Resultado WaveForms
-Conforme definido pelo cdigo foi conectado o pino 7* do analog discovery no pino TX1 do arduino e também algum dos pinos de terra do analog no terra do arduino (gnd),
-a dim de analisar os dados enviados graficamente so wav forms, foi obtido a seguinte imagem.
+Conforme definido pelo cdigo foi conectado o pino 7* do analog discovery no pino TX1 do arduino e também algum dos pinos de terra do analog no terra do arduino (gnd), a fim de analisar os dados enviados graficamente so wav forms, foi obtido a seguinte imagem.
 
 ![Img 1](doc/image2.png)
 
