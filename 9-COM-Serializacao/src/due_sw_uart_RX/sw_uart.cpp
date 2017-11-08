@@ -2,10 +2,10 @@
 #pragma GCC optimize ("-O3")
 
 void sw_uart_setup(due_sw_uart *uart, int rx, int tx, int stopbits, int databits, int paritybit) {
-	uart->pin_tx     = tx;
-	uart->pin_rx     = rx;
-	uart->stopbits   = stopbits;
-	uart->paritybit  = paritybit;
+  uart->pin_tx     = tx;
+  uart->pin_rx     = rx;
+  uart->stopbits   = stopbits;
+  uart->paritybit  = paritybit;
   uart->databits   = databits;
   pinMode(rx, INPUT);
   pinMode(tx, OUTPUT);
@@ -26,6 +26,7 @@ int calc_even_parity(char data) {
 
   int Sum = 0;
   for(int i = 0; i <= 7; i++){
+<<<<<<< HEAD
     Sum += (data >> i) & 0x01;   
   }
   
@@ -54,7 +55,11 @@ int sw_uart_receive_byte(due_sw_uart *uart, char* data) {
   // Confirma start BIT
     if (digitalRead(uart->pin_rx) == 0 ){
       _sw_uart_wait_half_T(uart);
+<<<<<<< HEAD
       
+=======
+    
+>>>>>>> f21801857d9adf0a810b7ad30feb0661a57dc923
   
   // checa se bit ainda é 0
       if(digitalRead(uart->pin_rx) == 0 ){
@@ -76,7 +81,11 @@ int sw_uart_receive_byte(due_sw_uart *uart, char* data) {
 
   // recebe stop bit
   int stop = digitalRead(uart->pin_rx);
+<<<<<<< HEAD
   _sw_uart_wait_T(uart);
+=======
+//  _sw_uart_wait_T(uart);
+>>>>>>> f21801857d9adf0a810b7ad30feb0661a57dc923
 
   parity = calc_even_parity(nchar);
   
