@@ -19,7 +19,7 @@ O processo inicia com o envio constante do sinal high(1) que indica o estado ini
 ## Resultado WaveForms
 Conforme definido pelo cdigo foi conectado o pino 7* do analog discovery no pino TX1 do arduino e também algum dos pinos de terra do analog no terra do arduino (gnd), a fim de analisar os dados enviados graficamente so wav forms, foi obtido a seguinte imagem.
 
-![Img 1](doc/image2.png)
+![Img 1](doc/image2.PNG)
 
 Em que pode-se verificar a estrutura em uart dos dados recebidos:
 Sinal inicial (1)
