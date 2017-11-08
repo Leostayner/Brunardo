@@ -11,7 +11,7 @@ void loop() {
 }
 
 void test_write() {
-  sw_uart_write_string(&uart,"Qualque Coisa Mesmo\n");
+  sw_uart_write_string(&uart,"Qualquer\n");
   delay(50);
 }
 

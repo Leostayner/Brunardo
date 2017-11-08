@@ -25,8 +25,8 @@ void sw_uart_write_string(due_sw_uart *uart, char* stringData) {
 int calc_even_parity(char data) {
 
   int Sum = 0;
-  for(int i = 0; i <= 1; i++){
-    Sum += data >> i & 0x01;   
+  for(int i = 0; i <= 7; i++){
+    Sum += (data >> i) & 0x01;   
   }
   
   int paridade = Sum % 2;
@@ -34,7 +34,8 @@ int calc_even_parity(char data) {
   if (paridade == 0){
    return 1; 
   }
-  return 0;
+  else{
+    return 0;}
 }
 
 // recebimento de dados da serial
@@ -47,20 +48,21 @@ int sw_uart_receive_byte(due_sw_uart *uart, char* data) {
   char parity, rx_parity;
   
   // aguarda start bit
-  char vericidade = false;
+  boolean vericidade = false;
   while(vericidade == false){
   
   // Confirma start BIT
     if (digitalRead(uart->pin_rx) == 0 ){
       _sw_uart_wait_half_T(uart);
-      }
+      
   
   // checa se bit ainda é 0
       if(digitalRead(uart->pin_rx) == 0 ){
         vericidade = true;
-        }
-    _sw_uart_wait_T(uart);  
+        }  
+    }
   }
+  _sw_uart_wait_T(uart);
   
   // recebe dados
   for(int i = 0 ; i < 7; i++){
@@ -69,12 +71,12 @@ int sw_uart_receive_byte(due_sw_uart *uart, char* data) {
   }
   
   // recebe paridade
-    rx_parity = digitalRead(uart->pin_rx);
-    _sw_uart_wait_T(uart);
+  rx_parity = digitalRead(uart->pin_rx);
+  _sw_uart_wait_T(uart);
 
   // recebe stop bit
-    char stop = digitalRead(uart->pin_rx);
-    _sw_uart_wait_T(uart);
+  int stop = digitalRead(uart->pin_rx);
+  _sw_uart_wait_T(uart);
 
   parity = calc_even_parity(nchar);
   
