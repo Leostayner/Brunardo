@@ -23,8 +23,8 @@ Conforme definido no codigo, deve-se conectar o pino 7* do analog discovery no p
 Em que pode-se verificar a estrutura em uart dos dados recebidos:
 Sinal inicial (1)
 start bit (0)
-payload         =  fafpakfpkafpakspf
-paridade ()
+payload(10100110)         =  fafpakfpkafpakspf
+paridade (1)
 stop bit (0)
 
 
