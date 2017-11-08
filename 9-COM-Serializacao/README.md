@@ -34,8 +34,9 @@ stop bit (0)
 
 #### Envia Start Bit
 Escreve no pino tx o valor do Start Bit(0);
-``digitalWrite(uart->pin_tx, LOW);``
-
+```mysql
+digitalWrite(uart->pin_tx, LOW);
+```
 #### Envia Payload
 Nessa etapa é necessário enviar bite a bite de cada caracter, como é recebido um byte, para obter o bit mais significativo deve-se percorrer o byte realizando um shift auto incrementado para a direita e utilizar um and com um 0x01. 
 
@@ -44,8 +45,9 @@ Inicialmente deve-se calcular a paridade somando cada bit do dado recebido e ver
 
 #### Envia Stop Bit
 Escreve no pino tx o valor do Stop Bit(1);
-``digitalWrite(uart->pin_tx, high);``
-
+```mysql
+digitalWrite(uart->pin_tx, high);
+```
 # Rx
 
 #### Confirma Start BIT
